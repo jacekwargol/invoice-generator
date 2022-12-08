@@ -1,0 +1,16 @@
+<form [formGroup]="newInvoiceForm" (ngSubmit)="submit()">
+    <div formArrayName="invoices">
+        <div *ngFor="let invoiceForm of invoices.controls; let i = index">
+            <div [formGroupName]="i">
+                <label for="name-{{i}}">Name:</label>
+                <input type="text" id="name-{{i}}" formControlName="name">
+                <label for="quantity-{{i}}">Quantity:</label>
+                <input type="text" id="quantity-{{i}}" formControlName="quantity">
+                <label for="price-{{i}}">Price:</label>
+                <input type="text" id="price-{{i}}">
+            </div>
+        </div>
+        <button type="button" (click)="addInvoice()">Add</button>
+        <button type="submit">Submit</button>
+    </div>
+</form>
