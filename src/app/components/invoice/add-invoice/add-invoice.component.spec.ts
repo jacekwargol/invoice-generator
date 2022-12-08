@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddInvoiceComponent } from './add-invoice.component';
+import { AddInvoiceComponent } from '../../../shared/add-invoice.component';
 
 describe('AddInvoiceComponent', () => {
   let component: AddInvoiceComponent;
@@ -8,9 +8,9 @@ describe('AddInvoiceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddInvoiceComponent ]
+      declarations: [AddInvoiceComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AddInvoiceComponent);
     component = fixture.componentInstance;

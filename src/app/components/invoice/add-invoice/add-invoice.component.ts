@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Invoice } from 'src/app/shared/models/invoice.model';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 
@@ -9,27 +9,16 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
   styleUrls: ['./add-invoice.component.scss']
 })
 export class AddInvoiceComponent implements OnInit {
-  private invoiceForm = this.fb.group({
-    name: [''],
-    count: [''],
-    unit: ['']
-  });
-
   private invoicesList: Invoice[] = [];
 
   newInvoiceForm = this.fb.group({
-    invoices: this.fb.array([
-      this.fb.group({
-        name: [''],
-        count: [''],
-        unit: ['']
-      })
-    ])
+    invoices: this.fb.array([])
   });
 
   constructor(private invoiceService: InvoiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.addInvoiceFormGroup();
   }
 
   get invoices() {
@@ -38,10 +27,34 @@ export class AddInvoiceComponent implements OnInit {
 
   addInvoice(): void {
     this.invoicesList.push(this.invoices.value[this.invoices.value.length - 1]);
-    this.invoices.push(this.invoiceForm);
+    this.addInvoiceFormGroup();
+  }
+
+  deleteInvoice(index: number): void {
+    this.invoices.removeAt(index);
+    this.invoicesList.splice(index, 1);
   }
 
   submit(): void {
     this.invoiceService.addInvoices(this.invoicesList);
+  }
+
+  private addInvoiceFormGroup(): void {
+    this.invoices.push(this.fb.group({
+      name: ['',
+        [Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(30)]],
+      count: ['',
+        [Validators.required,
+        Validators.min(1),
+        Validators.max(100),
+        Validators.pattern('^[0-9]+$')]],
+      price: ['',
+        [Validators.required,
+        Validators.min(1),
+        Validators.max(1000000),
+        Validators.pattern('^[0-9]+$')]]
+    }));
   }
 }
