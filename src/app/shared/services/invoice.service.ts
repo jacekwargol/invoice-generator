@@ -20,6 +20,10 @@ export class InvoiceService {
   }
 
   addInvoices(invoices: Invoice[]): void {
-    this.http.post(this.invoicesUrl, invoices);
+    invoices.forEach(invoice => {
+      this.http.post(this.invoicesUrl, invoice).subscribe({
+        error: e => console.log(e)
+      });
+    });
   }
 }

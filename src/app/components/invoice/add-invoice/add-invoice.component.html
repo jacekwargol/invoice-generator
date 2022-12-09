@@ -5,10 +5,10 @@
                 <label for="name-{{i}}">Name:</label>
                 <input type="text" id="name-{{i}}" formControlName="name">
                 <label for="count-{{i}}">Count:</label>
-                <input type="text" id="count-{{i}}" formControlName="count">
+                <input type="number" id="count-{{i}}" formControlName="count">
                 <label for="price-{{i}}">Price:</label>
                 <input type="text" id="price-{{i}}" formControlName="price">
-                <button type="button" (click)="deleteInvoice(i)">Delete</button>
+                <button type="number" (click)="deleteInvoice(i)">Delete</button>
             </div>
         </div>
         <button type="button" (click)="addInvoice()" [disabled]="!invoices.valid">Add</button>
