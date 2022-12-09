@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddInvoiceComponent } from './components/invoice/add-invoice/add-invoice.component';
 import { InvoicesListComponent } from './components/invoice/invoices-list/invoices-list/invoices-list.component';
+import { MenuComponent } from './components/menu/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddInvoiceComponent,
-    InvoicesListComponent
+    InvoicesListComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
