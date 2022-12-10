@@ -8,20 +8,20 @@
     },
     {
       "name": "test",
-      "count": "1",
-      "price": "2",
+      "count": 1,
+      "price": 2,
       "id": 1
     },
     {
       "name": "asdas",
-      "count": "2",
-      "price": "2",
+      "count": 2,
+      "price": 2,
       "id": 2
     },
     {
       "name": "123213",
       "count": 2,
-      "price": "3",
+      "price": 3,
       "id": 3
     }
   ]

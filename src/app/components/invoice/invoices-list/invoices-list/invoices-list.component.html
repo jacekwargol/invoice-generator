@@ -1,5 +1,7 @@
+<app-company></app-company>
 <div *ngFor="let invoice of invoices">
     <p>{{invoice.name}}</p>
     <p>{{invoice.count}}</p>
     <p>{{invoice.price}}</p>
 </div>
+<h3>{{totalPrice()}}</h3>

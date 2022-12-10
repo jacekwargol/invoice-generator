@@ -16,4 +16,9 @@ export class InvoicesListComponent implements OnInit {
     this.invoiceService.getInvoices().subscribe(i => this.invoices = i);
   }
 
+  totalPrice(): number {
+    return this.invoices
+      .map(i => i.count * i.price)
+      .reduce<number>((sum, current) => sum + current, 0);
+  }
 }
