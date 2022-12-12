@@ -2,16 +2,24 @@
     <div formArrayName="invoices">
         <div *ngFor="let invoiceForm of invoices.controls; let i = index">
             <div [formGroupName]="i">
-                <label for="name-{{i}}">Name:</label>
-                <input type="text" id="name-{{i}}" formControlName="name">
-                <label for="count-{{i}}">Count:</label>
-                <input type="number" id="count-{{i}}" formControlName="count">
-                <label for="price-{{i}}">Price:</label>
-                <input type="text" id="price-{{i}}" formControlName="price">
-                <button type="number" (click)="deleteInvoice(i)">Delete</button>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" id="name-{{i}}" formControlName="name">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Count</mat-label>
+                    <input matInput type="number" id="count-{{i}}" formControlName="count">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input matInput type="text" id="price-{{i}}" formControlName="price">
+                </mat-form-field>
+                <button mat-icon-button color="warn" (click)="deleteInvoice(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
             </div>
         </div>
-        <button type="button" (click)="addInvoice()" [disabled]="!invoices.valid">Add</button>
-        <button type="submit">Submit</button>
+        <button mat-flat-button color="accent" (click)="addInvoice()" [disabled]="!invoices.valid">Add</button>
+        <button mat-flat-button color="primary" type="submit">Submit</button>
     </div>
 </form>

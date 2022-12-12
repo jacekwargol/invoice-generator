@@ -1,0 +1,64 @@
+* {
+    font-family: $font-primary, $font-secondary;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-size: $text-size-large;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: $text-size-medium;
+    font-weight: 400;
+}
+
+.background-primary {
+    background-color: $background-primary;
+}
+
+.background-light {
+    background-color: $background-light;
+}
+
+.text-light {
+    color: $text-light;
+}
+
+.text-small {
+    font-size: $text-size-small;
+}
+
+.text-medium {
+    font-size: $text-size-medium;
+}
+
+.text-large {
+    font-size: $text-size-large;
+}
+
+.container {
+    display: grid;
+}
+
+.main {
+    @media (min-width: 600px) {
+        grid-template-columns: 1fr 4fr;
+    }
+
+    @media (min-width: 900px) {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+}
+
+.content {
+    padding: 50px 15px;
+}
