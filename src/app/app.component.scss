@@ -1,7 +1,11 @@
-.container {
-    display: grid;
+mat-toolbar {
+    height: 48px;
 }
 
-.main {
-    grid-template-columns: 1fr 3fr;
+.content {
+    padding-left: 40px;
+
+    @media(max-width: 960px) {
+        padding-left: 15px;
+    }
 }

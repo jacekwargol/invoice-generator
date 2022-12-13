@@ -1,3 +1,5 @@
-<p>{{company.name}}</p>
-<p>{{company.address}}</p>
-<p>{{phoneNumbers()}}</p>
+<div *ngIf="company">
+    <p>{{company.name}}</p>
+    <p>{{company.address}}</p>
+    <p>{{phoneNumbers()}}</p>
+</div>
