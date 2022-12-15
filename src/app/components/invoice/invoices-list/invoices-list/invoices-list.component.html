@@ -3,16 +3,30 @@
 <p *ngIf="invoices.length == 0; else invoicesList">No items</p>
 
 <ng-template #invoicesList>
-    <h3>Total price: <b>{{totalPrice()}}</b></h3>
     <table mat-table [dataSource]="invoices" matSort>
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
             <td mat-cell *matCellDef="let invoice"> {{invoice.id}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
-        <mat-text-column name="name"></mat-text-column>
-        <mat-text-column name="count"></mat-text-column>
-        <mat-text-column name="price"></mat-text-column>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.name}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Count </th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.count}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total Price </td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.price}} </td>
+            <td mat-footer-cell *matFooterCellDef> {{totalPrice()}} </td>
+
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+        <tr mat-footer-row *matFooterRowDef="columnsToDisplay"></tr>
     </table>
 </ng-template>
