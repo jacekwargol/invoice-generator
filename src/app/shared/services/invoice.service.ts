@@ -15,15 +15,11 @@ export class InvoiceService {
     return this.http.get<Invoice[]>(this.invoicesUrl);
   }
 
-  addInvoice(newInvoice: Invoice): Observable<Invoice> {
-    return this.http.post<Invoice>(this.invoicesUrl, newInvoice);
+  addInvoice(newInvoice: Invoice): void {
+    this.http.post(this.invoicesUrl, newInvoice).subscribe(i => console.log);
   }
 
   addInvoices(invoices: Invoice[]): void {
-    invoices.forEach(invoice => {
-      this.http.post(this.invoicesUrl, invoice).subscribe({
-        error: e => console.log(e)
-      });
-    });
+    invoices.forEach(invoice => this.addInvoice(invoice));
   }
 }

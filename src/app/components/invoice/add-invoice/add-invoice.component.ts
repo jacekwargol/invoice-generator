@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormControlName, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Invoice } from 'src/app/shared/models/invoice.model';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
@@ -39,9 +39,63 @@ export class AddInvoiceComponent implements OnInit {
   }
 
   submit(): void {
+    this.invoicesList.push(this.invoices.value[this.invoices.value.length - 1]);
     this.invoiceService.addInvoices(this.invoicesList);
     this.router.navigate(['/invoices']);
   }
+
+  getNameError(index: number): string {
+    const name = this.invoices.controls[index].get('name');
+    if (name?.hasError('required')) {
+      return 'Please enter a name';
+    }
+    if (name?.hasError('minlength')) {
+      return '3 characters minimum';
+    }
+    if (name?.hasError('maxlength')) {
+      return '30 characters maximum';
+    }
+
+    return '';
+  }
+
+  getCountError(index: number): string {
+    const count = this.invoices.controls[index].get('count');
+    if (count?.hasError('required')) {
+      return 'Please enter count';
+    }
+    if (count?.hasError('min')) {
+      return 'Minimum value 1';
+    }
+    if (count?.hasError('max')) {
+      return 'Maximum value 100';
+    }
+    if (count?.hasError('pattern')) {
+      return 'Please enter whole number';
+    }
+
+    return '';
+  }
+
+  getPriceError(index: number): string {
+    const price = this.invoices.controls[index].get('price');
+    if (price?.hasError('required')) {
+      return 'Please enter a price';
+    }
+    if (price?.hasError('min')) {
+      return 'Minimum value 1';
+    }
+    if (price?.hasError('max')) {
+      return 'Maximum value 1 000 000';
+    }
+    if (price?.hasError('pattern')) {
+      return 'Please enter whole number';
+    }
+
+    return '';
+  }
+
+
 
   private addInvoiceFormGroup(): void {
     this.invoices.push(this.fb.group({

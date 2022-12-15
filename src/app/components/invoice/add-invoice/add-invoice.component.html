@@ -2,24 +2,28 @@
     <div formArrayName="invoices">
         <div *ngFor="let invoiceForm of invoices.controls; let i = index">
             <div [formGroupName]="i">
-                <mat-form-field>
+                <mat-form-field hintLabel="Between 3 and 30 characters">
                     <mat-label>Name</mat-label>
-                    <input matInput type="text" id="name-{{i}}" formControlName="name">
+                    <input matInput type="text" id="name-{{i}}" formControlName="name" #name>
+                    <mat-hint align="end">{{ name.value.length }}/30</mat-hint>
+                    <mat-error *ngIf="invoices.controls[i].get('name')?.invalid">{{getNameError(i)}}</mat-error>
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field hintLabel="Maximum 100">
                     <mat-label>Count</mat-label>
                     <input matInput type="number" id="count-{{i}}" formControlName="count">
+                    <mat-error *ngIf="invoices.controls[i].get('count')?.invalid">{{getCountError(i)}}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Price</mat-label>
-                    <input matInput type="text" id="price-{{i}}" formControlName="price">
+                    <input matInput type="number" id="price-{{i}}" formControlName="price">
+                    <mat-error *ngIf="invoices.controls[i].get('price')?.invalid">{{getPriceError(i)}}</mat-error>
                 </mat-form-field>
                 <button mat-icon-button color="warn" (click)="deleteInvoice(i)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>
         </div>
-        <button mat-flat-button color="accent" (click)="addInvoice()" [disabled]="!invoices.valid">Add</button>
-        <button mat-flat-button color="primary" type="submit">Submit</button>
+        <button mat-flat-button color="accent" type="button" (click)="addInvoice()">Add</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="invoices.invalid">Submit</button>
     </div>
 </form>
