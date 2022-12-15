@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mock-api": "npx json-server --watch api/db.json --routes api/routes.json"
   },
   "private": true,
   "dependencies": {
