@@ -10,7 +10,8 @@ export class AppComponent implements OnInit {
   title = 'Invoice Generator';
   mobileMode = false;
 
-  constructor(private breakpoint: BreakpointObserver) { }
+  constructor(private breakpoint: BreakpointObserver) {
+  }
 
   ngOnInit(): void {
     this.breakpoint.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(

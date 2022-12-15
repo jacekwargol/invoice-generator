@@ -9,11 +9,14 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
 })
 export class InvoicesListComponent implements OnInit {
   invoices: Invoice[] = [];
+  columnsToDisplay = ['id', 'name', 'count', 'price'];
 
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    this.invoiceService.getInvoices().subscribe(i => this.invoices = i);
+    this.invoiceService.getInvoices().subscribe(i => {
+      this.invoices = i;
+    });
   }
 
   totalPrice(): number {

@@ -5,7 +5,8 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="mobileMode ? 'over' : 'side'" [opened]="!mobileMode" fixedInViewport="true">
+    <mat-sidenav #sidenav [mode]="mobileMode ? 'over' : 'side'" [opened]="!mobileMode" fixedInViewport="true"
+        color="primary" class="mat-app-background ">
         <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content class="content">

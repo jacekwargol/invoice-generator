@@ -1,6 +1,8 @@
-<div>
-    <button mat-button routerLink="/" class="menu-button">Add invoices</button>
-    <button mat-button routerLink="/invoices" class="menu-button">Invoices</button>
-</div>
+<mat-nav-list class="menu-navigation">
+    <a mat-list-item routerLink="/" class="menu-link">Add invoices</a>
+    <a mat-list-item routerLink="/invoices" class="menu-link">Invoices</a>
+</mat-nav-list>
 <mat-divider></mat-divider>
-<app-company></app-company>
+<div class="menu-content">
+    <app-company></app-company>
+</div>
