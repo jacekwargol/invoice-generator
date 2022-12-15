@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Invoice } from 'src/app/shared/models/invoice.model';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 
@@ -15,7 +16,9 @@ export class AddInvoiceComponent implements OnInit {
     invoices: this.fb.array([])
   });
 
-  constructor(private invoiceService: InvoiceService, private fb: FormBuilder) { }
+  constructor(private invoiceService: InvoiceService,
+    private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.addInvoiceFormGroup();
@@ -37,6 +40,7 @@ export class AddInvoiceComponent implements OnInit {
 
   submit(): void {
     this.invoiceService.addInvoices(this.invoicesList);
+    this.router.navigate(['/invoices']);
   }
 
   private addInvoiceFormGroup(): void {
