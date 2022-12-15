@@ -1,12 +1,11 @@
 <mat-toolbar color="primary" *ngIf="mobileMode">
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <button mat-icon-button (click)="sidenav.toggle()" position="end">
         <mat-icon>menu</mat-icon>
     </button>
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="mobileMode ? 'over' : 'side'" [opened]="!mobileMode" fixedInViewport="true"
-        color="primary" class="mat-app-background ">
+    <mat-sidenav #sidenav [mode]="'side'" [opened]="!mobileMode" fixedInViewport="true" position="end">
         <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content class="content">
